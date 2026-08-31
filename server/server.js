@@ -14,8 +14,7 @@ app.set('trust proxy', 1);
 await connectDB();
 
 // Middleware
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
-app.use(cors({ origin: frontendUrl, credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
 // API Routes
