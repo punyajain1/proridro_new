@@ -35,7 +35,6 @@ import {
   ChevronsLeft,
   ChevronsRight,
   SlidersHorizontal,
-  Download,
   Search,
   CheckSquare,
 } from "lucide-react";
@@ -55,7 +54,6 @@ interface DataTableProps<TData, TValue> {
   searchPlaceholder?: string;
   bulkActions?: (selectedRows: TData[]) => React.ReactNode;
   filterControls?: React.ReactNode;
-  exportFilename?: string;
   isLoading?: boolean;
   onRowClick?: (row: TData) => void;
 }
@@ -67,7 +65,6 @@ export function DataTable<TData, TValue>({
   searchPlaceholder = "Search records...",
   bulkActions,
   filterControls,
-  exportFilename = "prorido_export",
   isLoading = false,
   onRowClick,
 }: DataTableProps<TData, TValue>) {
@@ -106,10 +103,6 @@ export function DataTable<TData, TValue>({
   const selectedRows = table
     .getFilteredSelectedRowModel()
     .rows.map((row) => row.original);
-
-  const handleExportCsv = () => {
-    toast.error("Export to CSV is not supported yet");
-  };
 
   return (
     <div className="space-y-3">
@@ -175,17 +168,6 @@ export function DataTable<TData, TValue>({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Export to CSV */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleExportCsv}
-            className="h-8 text-xs"
-            title="Export to CSV"
-          >
-            <Download className="mr-1.5 h-3.5 w-3.5" />
-            Export CSV
-          </Button>
         </div>
       </div>
 

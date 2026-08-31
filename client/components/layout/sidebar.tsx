@@ -92,16 +92,7 @@ export function Sidebar() {
         },
       ],
     },
-    {
-      title: "System",
-      items: [
-        {
-          title: "Settings",
-          href: "/admin/settings",
-          icon: Settings,
-        },
-      ],
-    },
+
   ];
 
   return (

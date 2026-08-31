@@ -124,16 +124,7 @@ export default function UsersPage() {
         </div>
       ),
     },
-    {
-      accessorKey: "city",
-      header: "City",
-      cell: ({ row }) => (
-        <div className="flex items-center gap-1.5 text-xs">
-          <MapPin className="h-3 w-3 text-muted-foreground" />
-          <span>{row.original.city || "Unknown"}</span>
-        </div>
-      ),
-    },
+
     {
       accessorKey: "role",
       header: "Role",
