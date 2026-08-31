@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { CreditCard, CheckCircle2, ShieldCheck, Lock, ChevronLeft, Building } from "lucide-react";
 import { toast } from "sonner";
 
-export default function PaymentPage({ params }: { params: { id: string } }) {
+export default function PaymentPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);

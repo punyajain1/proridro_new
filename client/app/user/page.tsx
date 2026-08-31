@@ -93,9 +93,9 @@ export default function UserDashboard() {
                     </div>
                     <div className="mt-3 flex justify-between items-center text-xs">
                       <span className="text-muted-foreground">
-                        {new Date(booking.travelDate).toLocaleDateString()} at {booking.travelTime}
+                        {booking.travelDate ? new Date(booking.travelDate).toLocaleDateString() : 'N/A'} at {booking.travelTime}
                       </span>
-                      <span className="font-semibold text-white">{formatCurrency(booking.amount)}</span>
+                      <span className="font-semibold text-white">{formatCurrency(booking.amount || 0)}</span>
                     </div>
                   </div>
                 ))}

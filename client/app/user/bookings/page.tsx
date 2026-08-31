@@ -74,7 +74,7 @@ export default function UserBookings() {
                     <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
-                        {new Date(booking.travelDate).toLocaleDateString()}
+                        {booking.travelDate ? new Date(booking.travelDate).toLocaleDateString() : 'N/A'}
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
@@ -91,7 +91,7 @@ export default function UserBookings() {
                   <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center md:w-32 gap-3 border-t md:border-t-0 md:border-l border-border/40 pt-4 md:pt-0 md:pl-6">
                     <div className="text-left md:text-right">
                       <span className="text-xs text-muted-foreground block">Amount</span>
-                      <span className="font-bold text-lg text-white">{formatCurrency(booking.amount)}</span>
+                      <span className="font-bold text-lg text-white">{formatCurrency(booking.amount || 0)}</span>
                     </div>
                     <Button variant="outline" size="sm" className="w-full text-xs h-8">
                       <Eye className="w-3.5 h-3.5 mr-1" /> View

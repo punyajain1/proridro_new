@@ -177,7 +177,7 @@ export function CommandPalette({ open, onOpenChange, onNewBookingClick }: Comman
           {bookings.slice(0, 5).map((b) => (
             <CommandItem
               key={b.id}
-              value={`${b.id} ${b.customer.name} ${b.pickup} ${b.drop} ${b.status}`}
+              value={`${b.id} ${b.customer?.name} ${b.pickup} ${b.drop} ${b.status}`}
               onSelect={() =>
                 runCommand(() => {
                   router.push(`/booking?id=${b.id}`);
@@ -187,10 +187,10 @@ export function CommandPalette({ open, onOpenChange, onNewBookingClick }: Comman
               <Calendar className="mr-2 h-4 w-4 text-blue-500" />
               <div className="flex flex-col">
                 <span className="font-mono font-medium">
-                  {b.id} — {b.customer.name} ({b.vehicleType})
+                  {b.id} — {b.customer?.name} ({b.vehicleType})
                 </span>
                 <span className="text-[11px] text-muted-foreground">
-                  {b.pickup.substring(0, 24)}... → {b.drop.substring(0, 24)}... [{b.status}]
+                  {b.pickup?.substring(0, 24)}... → {b.drop?.substring(0, 24)}... [{b.status}]
                 </span>
               </div>
             </CommandItem>
