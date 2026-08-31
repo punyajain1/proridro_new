@@ -10,7 +10,11 @@ export async function loginAction(formData: FormData) {
   let redirectUrl = "";
 
   try {
-    const res = await fetch("http://127.0.0.1:4000/api/user/login", {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+    const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const apiUrl = normalizedBaseUrl.endsWith('/api') ? normalizedBaseUrl : `${normalizedBaseUrl}/api`;
+
+    const res = await fetch(`${apiUrl}/user/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
