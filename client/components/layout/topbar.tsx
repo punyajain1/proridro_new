@@ -26,8 +26,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SyncIndicator } from "@/components/shared/sync-indicator";
-import { NotificationPopover } from "@/components/layout/notification-popover";
 import { CommandPalette } from "@/components/layout/command-palette";
 import { opsStorage } from "@/lib/api/storage";
 import { toast } from "sonner";
@@ -86,58 +84,6 @@ export function Topbar() {
 
         {/* Center/Right Actions */}
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Google Sheets Sync Pill */}
-          <SyncIndicator />
-
-          {/* Minimal Search Button */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setCommandOpen(true)}
-            className="h-9 px-3 text-[13px] text-muted-foreground/70 hover:text-foreground hidden sm:flex items-center gap-2 bg-secondary/30 hover:bg-secondary/60 border-border/40 rounded-full transition-colors shadow-none"
-          >
-            <Search className="h-4 w-4" />
-            <span className="mr-2">Search...</span>
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-0.5 rounded border border-border/50 bg-background px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-              <span className="text-xs">⌘</span>K
-            </kbd>
-          </Button>
-
-          {/* Quick Action */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button size="sm" className="h-9 w-9 px-0 sm:w-auto sm:px-4 rounded-full text-[13px] gap-2 font-medium bg-foreground text-background hover:bg-foreground/90 shadow-sm transition-all flex items-center justify-center">
-                <Plus className="h-4 w-4" />
-                <span className="hidden md:inline">Action</span>
-                <ChevronDown className="hidden sm:block h-3.5 w-3.5 opacity-50" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 rounded-2xl p-2 border-border/40 shadow-xl bg-background/95 backdrop-blur-xl">
-              <DropdownMenuLabel className="text-[11px] text-muted-foreground/70 uppercase tracking-widest font-medium px-2 py-1.5">
-                Quick Shortcuts
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator className="bg-border/40 my-1" />
-              <DropdownMenuItem onClick={() => router.push("/booking?action=new")} className="text-[13px] cursor-pointer rounded-xl py-2 px-3 hover:bg-secondary/60 transition-colors">
-                <Calendar className="mr-3 h-4 w-4 text-muted-foreground/70" />
-                <span>New Booking</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/pricing?simulate=true")} className="text-[13px] cursor-pointer rounded-xl py-2 px-3 hover:bg-secondary/60 transition-colors">
-                <DollarSign className="mr-3 h-4 w-4 text-muted-foreground/70" />
-                <span>Price Calculator</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/vendor")} className="text-[13px] cursor-pointer rounded-xl py-2 px-3 hover:bg-secondary/60 transition-colors">
-                <Building2 className="mr-3 h-4 w-4 text-muted-foreground/70" />
-                <span>Vendor Directory</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push("/driver")} className="text-[13px] cursor-pointer rounded-xl py-2 px-3 hover:bg-secondary/60 transition-colors">
-                <Car className="mr-3 h-4 w-4 text-muted-foreground/70" />
-                <span>Driver Fleet</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          {/* Notifications */}
-          <NotificationPopover />
 
           {/* Theme Toggle */}
           <Button
